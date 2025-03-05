@@ -1,0 +1,70 @@
+---
+import "../styles.css";
+---
+
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Kotyane in progress</title>
+	</head>
+	<body class="dark bg-gray-900 text-white">
+		<header class="p-4 text-center text-3xl font-bold">
+			<span class="text-yellow-400">Prrrr feedbacks</span>
+		</header>
+
+		<main class="p-8 text-center">
+			<p class="text-xl mb-4">
+				Meow. There is empty now... Give us some time!
+			</p>
+
+			<article
+				class="mt-6 max-w-lg mx-auto p-4 bg-gray-800 rounded-lg shadow-lg"
+			>
+				<h2 class="text-2xl font-semibold">
+					Sample 'Kitty Dreams' Cafe
+				</h2>
+				<p>Meowazing capuccino! 🐱🐾</p>
+			</article>
+		</main>
+
+		<div class="cat-container">
+			<img id="pixel-cat" src="based_kotayne.png" alt="Pixel Cat" />
+		</div>
+
+		<style>
+			.cat-container {
+				position: fixed;
+				bottom: 50px;
+				left: 0;
+				width: 100%;
+				height: 500px;
+				overflow: hidden;
+				pointer-events: none;
+			}
+
+			#pixel-cat {
+				position: absolute;
+				bottom: 0;
+				left: -100px;
+				width: 80px;
+				height: auto;
+				image-rendering: pixelated;
+			}
+		</style>
+
+		<script>
+			const cat = document.getElementById("pixel-cat");
+			let posX = -100;
+
+			function animateCat() {
+				posX += 2;
+				if (posX > window.innerWidth + 100) posX = -100;
+				cat.style.transform = `translateX(${posX}px)`;
+				requestAnimationFrame(animateCat);
+			}
+
+			animateCat();
+		</script>
+	</body>
+</html>
