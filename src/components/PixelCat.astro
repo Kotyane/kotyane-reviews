@@ -1,0 +1,71 @@
+<div class="pixel-cat">
+    <svg
+        width="64"
+        height="64"
+        viewBox="0 0 64 64"
+        xmlns="http://www.w3.org/2000/svg"
+        style="image-rendering: pixelated;"
+    >
+        <!-- Левое ухо -->
+        <rect
+            x="8"
+            y="0"
+            width="12"
+            height="12"
+            fill="#fff"
+            stroke="#000"
+            stroke-width="1"></rect>
+        <!-- Правое ухо -->
+        <rect
+            x="44"
+            y="0"
+            width="12"
+            height="12"
+            fill="#fff"
+            stroke="#000"
+            stroke-width="1"></rect>
+        <!-- Голова -->
+        <rect
+            x="4"
+            y="10"
+            width="56"
+            height="44"
+            fill="#fff"
+            stroke="#000"
+            stroke-width="1"></rect>
+        <!-- Левый глаз -->
+        <rect x="18" y="26" width="8" height="8" fill="#000"></rect>
+        <!-- Правый глаз -->
+        <rect x="38" y="26" width="8" height="8" fill="#000"></rect>
+        <!-- Нос -->
+        <rect x="30" y="36" width="4" height="2" fill="#000"></rect>
+        <!-- Рот -->
+        <rect x="28" y="38" width="8" height="1" fill="#000"></rect>
+        <!-- Усики слева -->
+        <rect x="12" y="38" width="8" height="1" fill="#000"></rect>
+        <rect x="12" y="41" width="8" height="1" fill="#000"></rect>
+        <!-- Усики справа -->
+        <rect x="44" y="38" width="8" height="1" fill="#000"></rect>
+        <rect x="44" y="41" width="8" height="1" fill="#000"></rect>
+    </svg>
+</div>
+
+<style>
+    .pixel-cat {
+        position: fixed;
+        bottom: 10px;
+        left: -80px;
+        width: 64px;
+        height: 64px;
+        animation: drive 12s linear infinite;
+    }
+
+    @keyframes drive {
+        0% {
+            left: -80px;
+        }
+        100% {
+            left: 100%;
+        }
+    }
+</style>
