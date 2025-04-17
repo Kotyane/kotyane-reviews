@@ -37,3 +37,11 @@ body {
         transform: scale(0.95);
     }
 }
+
+body {
+    cursor: url('../assets/paw-open-40.png'), auto;
+  }
+  
+  body:active {
+    cursor: url('../assets/paw-closed-40.png'), auto;
+  }

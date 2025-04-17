@@ -1,8 +1,14 @@
 <header class="site-header">
-    <h1>
-        We are Kotyane, and we're here to review anything that might catch our
-        interest!
-    </h1>
+
+    <nav class="dropdown-menu">
+        <button class="menu-button" id="menu-button">Menu</button>
+        <ul class="menu-list" id="menu-list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/reviews">Reviews</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
 </header>
 
 <style>
@@ -10,10 +16,98 @@
         background-color: #111;
         padding: 20px;
         text-align: center;
+        position: relative;
     }
     .site-header h1 {
         color: #fff;
         font-size: 2rem;
         margin: 0;
     }
+    .dropdown-menu {
+        position: relative;
+        display: inline-block;
+        margin-top: 10px;
+    }
+    .menu-button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 1rem;
+        position: relative;
+        transition: transform 0.3s ease;
+    }
+    .menu-list {
+        display: none;
+        position: absolute;
+        background-color: #222;
+        list-style: none;
+        padding: 10px;
+        margin: 0;
+        border: 1px solid #444;
+        text-align: left;
+    }
+    .menu-list li {
+        margin: 5px 0;
+    }
+    .menu-list a {
+        color: #fff;
+        text-decoration: none;
+    }
+    .menu-list a:hover {
+        text-decoration: underline;
+    }
+    .menu-list.show {
+        display: block;
+    }
 </style>
+
+<script client:load>
+    const menuButton = document.getElementById("menu-button");
+    const menuList = document.getElementById("menu-list");
+    let interactionCount = 0;
+
+    menuButton.addEventListener("mouseover", () => {
+        if (interactionCount < 2) {
+            // Get viewport dimensions
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            // Get button dimensions
+            const buttonRect = menuButton.getBoundingClientRect();
+            const buttonWidth = buttonRect.width;
+            const buttonHeight = buttonRect.height;
+
+            // Define larger offsets for the first move
+            const offsetMultiplier = interactionCount === 0 ? 2 : 1; // First move is farther
+            let randomX = (Math.random() * 200 - 100) * offsetMultiplier;
+            let randomY = (Math.random() * 200 - 100) * offsetMultiplier;
+
+            // Calculate new position
+            let newLeft = buttonRect.left + randomX;
+            let newTop = buttonRect.top + randomY;
+
+            // Constrain within viewport
+            newLeft = Math.max(0, Math.min(newLeft, viewportWidth - buttonWidth));
+            newTop = Math.max(0, Math.min(newTop, viewportHeight - buttonHeight));
+
+            // Apply the new position
+            menuButton.style.transform = `translate(${newLeft - buttonRect.left}px, ${newTop - buttonRect.top}px)`;
+            interactionCount++;
+        }
+    });
+
+    menuButton.addEventListener("click", () => {
+        if (interactionCount >= 2) {
+            menuList.classList.toggle("show");
+        }
+    });
+
+    // Optional: Close the menu when clicking outside
+    document.addEventListener("click", (event) => {
+        if (!menuButton.contains(event.target) && !menuList.contains(event.target)) {
+            menuList.classList.remove("show");
+        }
+    });
+</script>
