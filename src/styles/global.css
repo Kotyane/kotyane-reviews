@@ -1,47 +1,104 @@
+/* Ensure the html and body fill the viewport */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Delius&display=swap');
+
+.delius-regular {
+    font-family: "Delius", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+:root {
+    --lavender-blush: #f7ebecff;
+    --thistle: #ddbdd5ff;
+    --rose-quartz: #ac9fbbff;
+    --space-cadet: #2b2d42ff;
+    --raisin-black: #1d1e2cff;
+}
+/* Make body a column flex container */
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #000;
-    font-family: Arial, sans-serif;
-    color: #fff;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  cursor: url('../assets/paw-open-40.png'), auto;
+  font-family: 'Delius', cursive;
 }
 
+/* Ensure the header has a fixed height (adjust as needed) */
+header {
+  height: 60px;
+  flex-shrink: 0;
+  font-family: 'Delius', cursive;
+}
+
+/* Main content takes the remaining space */
 .main-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 60px);
+  flex: 1;
+  display: flex;
+  flex-direction: row;
 }
 
+/* Existing panel rules remain unchanged */
+.panel {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.left-panel {
+  background-color: var(--space-cadet);
+  color: var(--rose-quartz);
+}
+
+.right-panel {
+  background-color: var(--raisin-black);
+  color: var(--thistle);}
+
+body:active {
+  cursor: url('../assets/paw-closed-40.png'), auto;
+}
+
+a,
+button,
+input,
+textarea {
+  cursor: url('../assets/paw-open-40.png'), auto;
+}
+
+a:active,
+button:active,
+input:active,
+textarea:active {
+  cursor: url('../assets/paw-closed-40.png'), auto;
+}
 
 .animated-text {
-    font-size: 3rem;
-    text-align: center;
-    animation: pulse 2s infinite;
+  font-size: 3rem;
+  text-align: center;
+  animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-    0% {
-        opacity: 0.5;
-        transform: scale(0.95);
-    }
+  0% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
 
-    50% {
-        opacity: 1;
-        transform: scale(1);
-    }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
 
-    100% {
-        opacity: 0.5;
-        transform: scale(0.95);
-    }
+  100% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
 }
-
-body {
-    cursor: url('../assets/paw-open-40.png'), auto;
-  }
-  
-  body:active {
-    cursor: url('../assets/paw-closed-40.png'), auto;
-  }

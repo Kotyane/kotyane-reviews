@@ -1,5 +1,4 @@
 <header class="site-header">
-
     <nav class="dropdown-menu">
         <button class="menu-button" id="menu-button">Menu</button>
         <ul class="menu-list" id="menu-list">
@@ -12,6 +11,14 @@
 </header>
 
 <style>
+
+    :root {
+            --lavender-blush: #f7ebecff;
+            --thistle: #ddbdd5ff;
+            --rose-quartz: #ac9fbbff;
+            --space-cadet: #2b2d42ff;
+            --raisin-black: #1d1e2cff;
+        }
     .site-header {
         background-color: #111;
         padding: 20px;
@@ -28,19 +35,25 @@
         display: inline-block;
         margin-top: 10px;
     }
+    /* New smart menu-button styles */
     .menu-button {
-        background-color: #333;
-        color: #fff;
+        background-color: var(--rose-quartz); /* нежно-розовый */
+        color: #4a2c2a;
         border: none;
         padding: 10px 20px;
         cursor: pointer;
         font-size: 1rem;
         position: relative;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(248, 211, 220, 0.5);
+    }
+    .menu-button.scared {
+        background-color: var(--thistle); /* чуть темнее, испугалась */
+        box-shadow: 0 6px 10px rgba(248, 170, 190, 0.7); /* резче тень */
     }
     .menu-list {
         display: none;
-        position: absolute;
         background-color: #222;
         list-style: none;
         padding: 10px;
@@ -92,15 +105,24 @@
             newLeft = Math.max(0, Math.min(newLeft, viewportWidth - buttonWidth));
             newTop = Math.max(0, Math.min(newTop, viewportHeight - buttonHeight));
 
-            // Apply the new position
+            // Apply the new position via CSS transform
             menuButton.style.transform = `translate(${newLeft - buttonRect.left}px, ${newTop - buttonRect.top}px)`;
             interactionCount++;
+            // Add 'scared' state when moving
+            menuButton.classList.add('scared');
         }
     });
 
     menuButton.addEventListener("click", () => {
         if (interactionCount >= 2) {
+            // Position the dropdown to appear right below the menu button at its last point
+            const buttonRect = menuButton.getBoundingClientRect();
+            menuList.style.position = "fixed";
+            menuList.style.top = (buttonRect.bottom + 5) + "px"; // 5px gap below the button
+            menuList.style.left = buttonRect.left + "px";
             menuList.classList.toggle("show");
+            // Remove the scared state when clicked
+            menuButton.classList.remove('scared');
         }
     });
 
