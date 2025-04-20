@@ -1,8 +1,8 @@
 ---
 import "../styles/global.css";
-import Header from "../components/Header.astro";
+import Header from "../components/Header/Header.astro";
 import PixelCat from "../components/PixelCat.astro";
-//import CursorKitty from "../components/CursorKitty.astro";
+import PetalRain from "../components/Header/PetalRain.astro";
 ---
 
 <html lang="ru">
@@ -10,29 +10,24 @@ import PixelCat from "../components/PixelCat.astro";
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Kotyane Reviews</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Delius&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
 	<body>
 		<Header />
-
 		<main class="main-content">
-            <div class="panel left-panel">
-                <!-- Left panel content goes here -->
-                <h2>Left Meow</h2>
-				
-				
-
-	
-            </div>
-            <div class="panel right-panel">
-                <!-- Right panel content goes here -->
-                <h2>Right Meow</h2>
-            </div>
+			<div class="panel left-panel">
+				<h2>Left Meow</h2>
+			</div>
+			<div class="panel right-panel">
+				<h2>Right Meow</h2>
+			</div>
 		</main>
-
-		<!-- <CursorKitty /> -->
+		<PetalRain />
 		<PixelCat />
 	</body>
 </html>
